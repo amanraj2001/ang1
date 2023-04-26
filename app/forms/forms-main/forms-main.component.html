@@ -1,0 +1,36 @@
+<p>forms-main works!</p>
+
+<div class="container">
+  <form [formGroup]="form">
+      <label for="">id</label>
+      <input type="number" formControlName="id" class="form-control">
+      <label for="">name</label>
+      <input type="text" formControlName="name" class="form-control">
+      <div formGroupName="address">
+
+      <label for="">state</label>
+      <input type="text" formControlName="state" class="form-control">
+      <label for="">city</label>
+      <input type="text" formControlName="city" class="form-control">
+    </div>
+    <label for="">phone number</label>
+    <input type="number" formControlName="phone" class="form-control">
+    <div formArrayName="hobbies" *ngFor="let item of hob.controls;let i = index">
+      <div formGroupName="{{i}}">
+        <div *ngFor="let item of check">
+          <label for="" class="form-label">{{item}}</label>
+          <input type="checkbox" formControlName="indoor" class="form-check-input">
+        </div>
+        <input type="text" formControlName="outdoor">
+
+      </div>
+    </div>
+    <button (click)="addData()" class="btn btn-primary">add Data</button>
+  </form>
+  {{form.value|json}}
+  <table class="table">
+    <tr *ngFor="let item of arr">
+      <td>{{item.id}}</td>
+    </tr>
+  </table>
+</div>
